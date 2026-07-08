@@ -1,0 +1,34 @@
+<div class="menu-nav">
+    <div class="menu-header">
+        <img src="assets/icon/icon.png" />
+    </div>
+    <hr class="divider">
+
+    <div class="menu-content">
+
+        @for (item of menuItems; track $index) {
+        <a class="menu-item" [ngClass]="{ active: isActive(item.url) }"
+          (click)="goToUrl(item.url)">
+            <mat-icon>{{item.icon}}</mat-icon>
+            <span>{{item.title}}</span>
+        </a>
+        }
+
+    </div>
+
+    <div class="menu-footer">
+        <div class="user-profile">
+            <div class="user-avatar">
+                RR
+            </div>
+
+            <div class="user-info">
+                <h3>Rebeca Ribeiro</h3>
+                <small>rebecasouzacoder</small>
+            </div>
+        </div>
+        <hr class="divider">
+
+
+    </div>
+</div>

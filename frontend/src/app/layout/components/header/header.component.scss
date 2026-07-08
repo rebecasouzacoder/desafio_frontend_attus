@@ -1,0 +1,33 @@
+.header {
+    background-color: var(--color-header);
+    color: var(--color-primary-contrast);
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.header-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 0 8px;
+    }
+
+    .logo img {
+        width: 32px;
+        height: 32px;
+    }
+}
