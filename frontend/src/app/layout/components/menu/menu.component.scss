@@ -37,13 +37,7 @@
     padding: 20px;
 }
 
-.divider {
-    border: 0;
-    border-top: 1px solid var(--color-text-disabled);
 
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
 .menu-footer {
     flex-shrink: 0;
@@ -61,23 +55,6 @@
     display: flex;
     align-items: center;
     gap: 12px
-}
-
-.user-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 50%;
-
-    background-color: var(--color-focus);
-    color: var(--color-primary);
-
-    font-size: 1rem;
-    font-weight: 400;
 }
 
 .user-info {

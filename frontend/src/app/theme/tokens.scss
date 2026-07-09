@@ -1,0 +1,38 @@
+:root {
+  /* =========================
+   * Primary
+   * ========================= */
+  --color-primary: #005eff;
+  --color-primary-hover: #1565c0;
+  --color-primary-light: #42a5f5;
+  --color-primary-dark: #002fc9;
+  --color-primary-contrast: #ffffff;
+
+  --color-secondary: #ff9800;
+
+  --color-tertiary:   #f44336;
+
+  /* =========================
+   * Backgrounds
+   * ========================= */
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-header: #323238;
+  --color-sidebar: #ffffff;
+
+  /* =========================
+   * Text
+   * ========================= */
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-disabled: #eeeeee;
+  --color-text-inverse: #ffffff;
+
+  /* =========================
+   * States
+   * ========================= */
+  --color-hover: #f5f7fa;
+  --color-selected: #e3f2fd;
+  --color-focus: #bbdefb;
+
+}

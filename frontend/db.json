@@ -2,19 +2,19 @@
   "users": [
     {
       "id": 1,
-      "nome": "João Silva",
-      "email": "joao@email.com",
+      "name": "João Silva",
+      "mail": "joao@email.com",
       "cpf": "123.456.789-00",
-      "telefone": "(11) 99999-9999",
-      "tipoTelefone": "Celular"
+      "phone": "(11) 99999-9999",
+      "typePhone": "Celular"
     },
     {
       "id": 2,
-      "nome": "Maria Souza",
-      "email": "maria@email.com",
+      "name": "Maria Souza",
+      "mail": "maria@email.com",
       "cpf": "987.654.321-00",
-      "telefone": "(11) 98888-8888",
-      "tipoTelefone": "Residencial"
+      "phone": "(11) 98888-8888",
+      "typePhone": "Residencial"
     }
   ]
 }

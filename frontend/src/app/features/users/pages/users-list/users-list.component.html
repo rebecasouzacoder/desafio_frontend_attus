@@ -1,1 +1,23 @@
-<p>users-list works!</p>
+<div class="container-page">
+
+    <section>
+        <h3 class="title-page">
+            Usuários
+        </h3>
+        <div class="clip-title"></div>
+    </section>
+
+    <app-search></app-search>
+
+    <hr class="divider">
+
+
+    <div class="flex justify-end">
+         <button mat-flat-button>
+             <mat-icon>add</mat-icon>
+            Cadastrar usuário
+         </button>
+    </div>
+
+    <app-card-grid [usersList]="usersList()" ></app-card-grid>
+</div>

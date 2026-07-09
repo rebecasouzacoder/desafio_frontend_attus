@@ -13,7 +13,7 @@ export interface IUser {
   id: number;
 
   /** Nome completo do usuário. */
-  nome: string;
+  name: string;
 
   /** Endereço de e-mail. */
   email: string;
@@ -22,8 +22,8 @@ export interface IUser {
   cpf: string;
 
   /** Número de telefone. */
-  telefone: string;
+  phone: string;
 
   /** Tipo do telefone informado. */
-  tipoTelefone: EPhoneType;
+  typePhone: EPhoneType;
 }
