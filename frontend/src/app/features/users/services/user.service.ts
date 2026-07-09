@@ -43,7 +43,7 @@ export class UserService {
    * @memberof UserService
    */
   public getUsers(search?: string): Observable<IUser[]> {
-    const params = search ? new HttpParams().set('nome_like', search) : undefined;
+    const params = search ? new HttpParams().set('name_like', search) : undefined;
 
     return this.http.get<IUser[]>(this.api, { params });
   }

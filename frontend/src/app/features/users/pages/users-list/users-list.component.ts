@@ -6,6 +6,9 @@ import { MatIcon } from '@angular/material/icon';
 import { CardGridComponent } from "../../components/card-grid/card-grid.component";
 import { IUser } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { EmptyResultComponent } from '../../components/empty-result/empty-result.component';
+import { LoadingComponent } from '../../components/loading/loading.component';
+import { ToastService } from '../../../../shared/services/toast/toast.service';
 /**
  * Componente responsável pela listagem de usuários do sistema.
  * Responsabilidades:
@@ -19,7 +22,7 @@ import { UserService } from '../../services/user.service';
  */
 @Component({
   selector: 'app-users-list',
-  imports: [SearchComponent, MatButtonModule, MatIcon, CardGridComponent],
+  imports: [SearchComponent, MatButtonModule, MatIcon, CardGridComponent, EmptyResultComponent, LoadingComponent],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
 })
@@ -54,6 +57,8 @@ export class UsersListComponent implements OnInit {
    */
   private usersService = inject(UserService);
 
+  private toast = inject(ToastService);
+
   /**
    * Referência utilizada pelo Angular para controlar
    * o ciclo de vida da subscription.
@@ -74,6 +79,16 @@ export class UsersListComponent implements OnInit {
   }
 
   /**
+   * Realiza a busca de usuários conforme termo informado.
+   *
+   * @param {string} value
+   * @memberof UsersListComponent
+   */
+  public onSearch(value: string): void {
+    this.loadUsers(value);
+  }
+
+  /**
    * Realiza a busca dos usuários através da API.
    * atualiza os estados:
    * - loading durante a requisição;
@@ -83,10 +98,12 @@ export class UsersListComponent implements OnInit {
    * @private
    * @memberof UsersListComponent
    */
-  private loadUsers(): void {
+  private loadUsers(name?: string): void {
     this.loading.set(true);
+    this.error.set(false);
+    this.usersList.set([]);
 
-    this.usersService.getUsers().pipe(takeUntilDestroyed(this.destroyRef))
+    this.usersService.getUsers(name).pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (users) => {
           this.usersList.set(users);
@@ -94,6 +111,8 @@ export class UsersListComponent implements OnInit {
         error: () => {
           this.error.set(true);
           this.loading.set(false);
+
+          this.toast.error('Não foi possível carregar os usuários');
         },
         complete: () => {
           this.loading.set(false);

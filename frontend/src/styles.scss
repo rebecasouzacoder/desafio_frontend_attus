@@ -2,4 +2,4 @@
 @import './app//theme//utility.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden; background-color: #F7F7F2; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden; background-color: var(--color-background); }

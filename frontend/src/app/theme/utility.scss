@@ -65,3 +65,23 @@
     font-size: 1rem;
     font-weight: 400;
 }
+
+.toast-success {
+  --mdc-snackbar-container-color: #16a34a;
+  --mat-snack-bar-button-color: #fff;
+}
+
+.toast-error {
+  --mdc-snackbar-container-color: #dc2626;
+  --mat-snack-bar-button-color: #fff;
+}
+
+.toast-warning {
+  --mdc-snackbar-container-color: #f59e0b;
+  --mat-snack-bar-button-color: #fff;
+}
+
+.toast-info {
+  --mdc-snackbar-container-color: #2563eb;
+  --mat-snack-bar-button-color: #fff;
+}

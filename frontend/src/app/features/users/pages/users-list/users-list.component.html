@@ -7,17 +7,25 @@
         <div class="clip-title"></div>
     </section>
 
-    <app-search></app-search>
+    <app-search (searchChange)="onSearch($event)"></app-search>
 
     <hr class="divider">
 
 
     <div class="flex justify-end">
-         <button mat-flat-button>
-             <mat-icon>add</mat-icon>
+        <button mat-flat-button>
+            <mat-icon>add</mat-icon>
             Cadastrar usuário
-         </button>
+        </button>
     </div>
 
-    <app-card-grid [usersList]="usersList()" ></app-card-grid>
+    <div class="content-grid">
+        @if (loading()) {
+        <app-loading message="Carregando usuários..." />
+        } @else if (usersList().length > 0) {
+        <app-card-grid [usersList]="usersList()" />
+        } @else {
+        <app-empty-result message="Nenhum usuário encontrado para os filtros informados" />
+        }
+    </div>
 </div>
