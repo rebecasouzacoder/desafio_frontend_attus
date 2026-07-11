@@ -1,0 +1,118 @@
+<div mat-dialog-title>
+    <div class="title-form">
+        @if(data.mode === 'create'){
+        Criar usuário
+        }
+
+        @else if(data.mode === 'edit'){
+        Editar usuário
+        }
+
+        @else {
+        Visualizar usuário
+        }
+        <div class="clip-title"></div>
+    </div>
+
+</div>
+
+<mat-dialog-content>
+    <form [formGroup]="form" class="user-form">
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Nome
+            </mat-label>
+
+            <input matInput formControlName="name">
+
+            @if(form.controls.name.hasError('required')){
+            <mat-error>
+                Nome é obrigatório
+            </mat-error>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Email
+            </mat-label>
+
+            <input matInput formControlName="email">
+
+            @if(form.controls.email.hasError('required')){
+            <mat-error>
+                Email é obrigatório
+            </mat-error>
+            }
+
+            @if(form.controls.email.hasError('email')){
+            <mat-error>
+                Email inválido
+            </mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                CPF
+            </mat-label>
+
+            <input matInput formControlName="cpf"  (input)="formatCpf($event)">
+
+            @if(form.controls.cpf.hasError('required')){
+            <mat-error>
+                CPF é obrigatório
+            </mat-error>
+            }
+            @if(form.controls.cpf.hasError('cpfInvalid')){
+            <mat-error>
+                CPF inválido
+            </mat-error>
+            }
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Tipo de telefone
+            </mat-label>
+
+            <mat-select formControlName="typePhone">
+                @for(type of phoneTypes; track type) {
+                <mat-option [value]="type">
+                    {{ type }}
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <mat-label>
+                Telefone
+            </mat-label>
+
+            <input matInput formControlName="phone"  (input)="onPhoneInput($event)">
+
+            @if(form.controls.phone.hasError('required')){
+            <mat-error>
+                Telefone é obrigatório
+            </mat-error>
+            }
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="close()">
+        Cancelar
+    </button>
+
+    @if(!isViewMode){
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="save()">
+        Salvar
+    </button>
+    }
+</mat-dialog-actions>

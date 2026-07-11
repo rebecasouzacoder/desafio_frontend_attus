@@ -2,51 +2,51 @@
 
   @for (user of usersList(); track user.email) {
 
-    <mat-card class="user-card" appearance="outlined">
+  <mat-card class="user-card" appearance="outlined">
 
-      <mat-card-content>
+    <mat-card-content>
 
-        <div class="user-content">
+      <div class="user-content">
 
-          <div class="user-avatar">
-            {{ user.name.substring(0, 2).toUpperCase() }}
-          </div>
-
-          <div class="user-info">
-
-            <h3>
-              {{ user.name }}
-            </h3>
-
-            <span>
-              {{ user.email }}
-            </span>
-
-          </div>
-
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
+        <div class="user-avatar">
+          {{ user.name.substring(0, 2).toUpperCase() }}
         </div>
 
-      </mat-card-content>
+        <div class="user-info">
 
-    </mat-card>
+          <h3>
+            {{ user.name }}
+          </h3>
+
+          <span>
+            {{ user.email }}
+          </span>
+
+        </div>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-menu #menu="matMenu">
+
+    <button mat-menu-item (click)="onAction('view', user)">
+      <mat-icon>visibility</mat-icon>
+      <span>Visualizar</span>
+    </button>
+
+    <button mat-menu-item (click)="onAction('edit', user)">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+
+  </mat-menu>
 
   }
 
 </div>
-
-<mat-menu #menu="matMenu">
-
-  <button mat-menu-item>
-    <mat-icon>visibility</mat-icon>
-    <span>Visualizar</span>
-  </button>
-
-  <button mat-menu-item>
-    <mat-icon>edit</mat-icon>
-    <span>Editar</span>
-  </button>
-
-</mat-menu>

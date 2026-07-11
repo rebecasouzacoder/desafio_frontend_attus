@@ -1,0 +1,45 @@
+<div class="layout">
+
+  <app-header></app-header>
+
+
+  <mat-sidenav-container class="container">
+
+    <mat-sidenav
+      #sidenav
+      [mode]="isMobile() ? 'over' : 'side'"
+      [opened]="!isMobile()">
+
+      <app-menu></app-menu>
+
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+
+
+      @if (isMobile()) {
+        <button
+          mat-icon-button
+          class="menu-toggle"
+          (click)="sidenav.toggle()">
+
+          <mat-icon>menu</mat-icon>
+
+        </button>
+      }
+
+
+      <main class="page-content">
+        <ng-content></ng-content>
+      </main>
+
+
+      <app-footer></app-footer>
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

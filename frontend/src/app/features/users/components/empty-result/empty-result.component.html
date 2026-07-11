@@ -1,5 +1,17 @@
-<mat-card class="empty-result">
+<mat-card class="empty-result" [class.empty-result--error]="variant() === 'error'">
+
+  <mat-icon class="empty-result__icon">
+    {{ icon() }}
+  </mat-icon>
+
   <span class="empty-result__message">
     {{ message() }}
   </span>
+
+  @if (variant() === 'error') {
+  <button mat-stroked-button color="warn" (click)="retry.emit()">
+    Tentar novamente
+  </button>
+  }
+
 </mat-card>

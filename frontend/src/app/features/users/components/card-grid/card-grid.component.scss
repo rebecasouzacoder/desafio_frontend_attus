@@ -1,40 +1,75 @@
-.user-grid {
-  padding: 20px;
-  display: grid;
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 
+  overflow: hidden;
+}
+
+.user-grid {
+  display: grid;
   grid-template-columns: repeat(
     auto-fill,
     minmax(280px, 1fr)
   );
 
+  align-content: start;
+
   gap: 16px;
-  
-}
-.user-card {
+
+  flex: 1;
   width: 100%;
-  border-radius: 16px;
+  min-height: 0;
 
-  transition: all .25s ease;
-  background-color: (var(--color-primary-contrast));
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  &:hover {
-    border-color: var(--color-primary-light);
-    box-shadow: 0 8px 24px rgba(0, 94, 255, .12);
+  /* respiro nas bordas e, principalmente, embaixo do último card,
+     pra ele nao ficar colado/cortado na borda da area de scroll */
+  padding: 4px 4px 16px 0;
+
+  scrollbar-width: thin;
+}
+
+@media (max-width: 600px) {
+  .user-grid {
+    grid-template-columns: 1fr;
   }
 }
 
+.user-card {
+  width: 100%;
+  min-width: 0;
+
+  border-radius: 16px;
+
+  transition: all .25s ease;
+  background-color: var(--color-primary-contrast);
+}
+
+
 .user-content {
-  display: flex;
+  display: grid;
+
+  grid-template-columns: auto minmax(0, 1fr) auto;
+
   align-items: center;
 
   gap: 16px;
+
+  width: 100%;
 }
 
-.user-info {
-  flex: 1;
 
-  display: flex;
-  flex-direction: column;
+.user-avatar {
+  flex-shrink: 0;
+}
+
+
+.user-info {
+  min-width: 0;
 
   h3 {
     margin: 0;
@@ -43,7 +78,11 @@
     font-weight: 600;
 
     color: var(--color-text-primary);
+
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
+
 
   span {
     margin-top: 4px;
@@ -51,18 +90,13 @@
     font-size: 14px;
 
     color: var(--color-text-secondary);
-  }
 
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 
-
-.edit-button {
-  color: var(--color-primary);
-
-  transition: .2s ease;
-
-  &:hover {
-    background: rgba(0, 94, 255, .08);
-  }
+button[mat-icon-button] {
+  flex-shrink: 0;
 }

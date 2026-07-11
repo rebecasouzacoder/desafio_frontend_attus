@@ -15,7 +15,7 @@ export interface IUser {
   /** Nome completo do usuário. */
   name: string;
 
-  /** Endereço de e-mail. */
+  /** Endereço de e-email. */
   email: string;
 
   /** CPF do usuário. */

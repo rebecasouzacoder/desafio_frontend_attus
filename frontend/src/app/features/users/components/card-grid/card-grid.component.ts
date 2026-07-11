@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { IUser } from '../../models/user.model';
+import { IUserCardAction, UserCardActionType } from '../../models/user-card-action.model';
 
 /**
  * Componente responsável pela apresentação visual
@@ -28,4 +29,16 @@ export class CardGridComponent {
    * @memberof CardGridComponent
    */
   public usersList = input.required<IUser[]>();
+
+  /**
+   * Evento emitido quando uma ação é realizada
+   * em um usuário.
+   *
+   * @memberof CardGridComponent
+   */
+  public action = output<IUserCardAction>();
+
+  public onAction(type: UserCardActionType, user: IUser): void {
+    this.action.emit({type, user})
+  }
 }

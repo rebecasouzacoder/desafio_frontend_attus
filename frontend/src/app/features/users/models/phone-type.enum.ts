@@ -5,7 +5,11 @@
  * @enum {number}
  */
 export enum EPhoneType {
-  Mobile = 'Celular',
-  Home = 'Residencial',
-  Work = 'Comercial'
+  Mobile = 'MOBILE',
+  Home = 'HOME',
 }
+
+export const PhoneTypeLabel = {
+  [EPhoneType.Mobile]: 'Celular',
+  [EPhoneType.Home]: 'Residencial',
+};

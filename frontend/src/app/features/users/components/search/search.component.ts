@@ -69,7 +69,11 @@ export class SearchComponent implements OnInit {
    */
   private changeForm(): void {
     this.searchControl.valueChanges
-      .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe((value) => {
         this.searchChange.emit(value.trim());
       });

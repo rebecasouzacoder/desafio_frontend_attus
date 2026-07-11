@@ -1,16 +1,30 @@
 .container-page {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  overflow-x: hidden;
 }
 
 .title-page {
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 0px;
-    color: var(--color-text-primary);
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
 }
+
+.clip-title {
+  width: 50px;
+  height: 10px;
+  background: var(--color-tertiary);
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
 
 .subtitle {
      font-size: 15px;
@@ -19,11 +33,6 @@
     color: var(--color-primary);
 }
 
-.clip-title {
-  border: 5px solid var(--color-tertiary);
-  border-radius: 40px;
-  width: 20px;
-}
 
 .flex {
     display: flex;
@@ -85,3 +94,8 @@
   --mdc-snackbar-container-color: #2563eb;
   --mat-snack-bar-button-color: #fff;
 }
+
+.mat-mdc-menu-content {
+  background-color: var(--color-primary-contrast);
+}
+

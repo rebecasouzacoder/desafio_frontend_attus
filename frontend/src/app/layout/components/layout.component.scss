@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  height: 100dvh;
+}
+
+
+.container {
+  height: 100%;
+}
+
+
+mat-sidenav {
+  width: 240px;
+
+  background: var(--color-background);
+
+  border-right: none;
+}
+
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--color-background);
+
+  overflow: auto;
+}
+
+
+.page-content {
+  flex: 1;
+
+  margin: 30px;
+
+  background: var(--color-primary-contrast);
+
+  border-radius: 20px;
+
+  overflow: auto;
+
+  box-sizing: border-box;
+}
+
+
+.menu-toggle {
+  display: none;
+}
+
+
+/* Mobile */
+@media(max-width: 768px) {
+
+  .page-content {
+    margin: 16px;
+
+    border-radius: 16px;
+  }
+
+
+  .menu-toggle {
+    display: flex;
+
+    margin: 12px;
+
+    border: none;
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+
+}

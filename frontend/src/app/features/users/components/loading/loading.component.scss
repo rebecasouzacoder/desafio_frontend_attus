@@ -1,5 +1,11 @@
+:host {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
 .loading {
-  min-height: 100%;
+  flex: 1;
   width: 100%;
 
   display: flex;
@@ -9,7 +15,7 @@
   gap: 16px;
 
   border-radius: 16px;
-    background-color: transparent;
+  background-color: transparent;
 
   border: none;
 

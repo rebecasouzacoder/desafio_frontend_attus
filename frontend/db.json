@@ -1,20 +1,12 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "João Silva",
-      "mail": "joao@email.com",
-      "cpf": "123.456.789-00",
-      "phone": "(11) 99999-9999",
-      "typePhone": "Celular"
-    },
-    {
-      "id": 2,
-      "name": "Maria Souza",
-      "mail": "maria@email.com",
-      "cpf": "987.654.321-00",
-      "phone": "(11) 98888-8888",
-      "typePhone": "Residencial"
+      "name": "Rebeca Ribeiro",
+      "email": "rebeca.rnsouza@gmail.com",
+      "cpf": "000.000.000-00",
+      "phone": "(11) 9494-09599",
+      "typePhone": "Celular",
+      "id": 1
     }
   ]
 }
