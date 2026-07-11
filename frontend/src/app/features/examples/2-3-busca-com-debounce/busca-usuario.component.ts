@@ -23,7 +23,6 @@ import { UsuarioBuscaService } from './usuario-busca.service';
 // unsubscribe sozinho
 @Component({
   selector: 'app-busca-usuario',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     AsyncPipe,

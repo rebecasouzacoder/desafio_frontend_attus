@@ -8,7 +8,6 @@ import { PessoaService } from './pessoa.service';
 // forkJoin (paralelo) em vez de encadear com switchMap — ver README
 @Component({
   selector: 'app-pessoa-detalhe',
-  standalone: true,
   template: `<p>{{ texto }}</p>`,
 })
 export class PessoaDetalheComponent implements OnInit {

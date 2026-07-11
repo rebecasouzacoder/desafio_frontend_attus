@@ -54,7 +54,6 @@ function embaralhar<T>(lista: T[]): T[] {
 
 @Component({
   selector: 'app-examples-demo',
-  standalone: true,
   imports: [
     AsyncPipe,
     ReactiveFormsModule,

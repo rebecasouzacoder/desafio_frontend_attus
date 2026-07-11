@@ -13,7 +13,6 @@ import { PessoaService } from './pessoa.service';
 // não reavalia a view sozinho, precisa do markForCheck lá embaixo
 @Component({
   selector: 'app-pessoa-onpush-demo',
-  standalone: true,
   providers: [PessoaService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<h1>{{ texto }}</h1>`,

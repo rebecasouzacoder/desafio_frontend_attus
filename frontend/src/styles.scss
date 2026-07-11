@@ -1,5 +1,5 @@
-@import './app/theme/tokens.scss';
-@import './app//theme//utility.scss';
+@use './app/theme/tokens.scss';
+@use './app/theme/utility.scss';
 
 html,
 body {
