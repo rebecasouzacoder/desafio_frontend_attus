@@ -31,6 +31,11 @@ public menuItems: IMenu[] = [
     title: 'Usuários',
     url: 'users-list',
     icon: 'supervised_user_circle',
+  },
+  {
+    title: 'Exemplos',
+    url: 'exemplos',
+    icon: 'science',
   }
 ];
 

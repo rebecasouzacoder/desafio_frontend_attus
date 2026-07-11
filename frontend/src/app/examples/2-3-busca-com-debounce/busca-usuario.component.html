@@ -1,0 +1,25 @@
+<mat-form-field appearance="outline" class="campo-busca">
+  <mat-label>Buscar usuário</mat-label>
+  <input matInput [formControl]="buscaControl" placeholder="Digite um nome..." />
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+@if (loading()) {
+  <div class="busca-loading">
+    <mat-spinner diameter="18" />
+    <span>Buscando...</span>
+  </div>
+}
+
+<ul class="busca-resultado">
+  @for (usuario of (usuarios$ | async); track usuario.id) {
+    <li>
+      <strong>{{ usuario.name }}</strong>
+      <span>{{ usuario.email }}</span>
+    </li>
+  } @empty {
+    @if (!loading()) {
+      <li class="busca-vazio">Nenhum usuário encontrado (ou o json-server não está rodando — <code>npm run api</code>)</li>
+    }
+  }
+</ul>

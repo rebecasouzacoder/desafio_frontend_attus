@@ -1,0 +1,180 @@
+<div class="container-page">
+  <header class="demo-header">
+    <h1>Exemplos da avaliação</h1>
+    <p>
+      Rota temporária (<code>/exemplos</code>) só pra ver cada resposta rodando de verdade.
+      2.3 e 3.2 puxam dado real do json-server do projeto — se estiver tudo em branco, roda
+      <code>npm run api</code> num terminal separado.
+    </p>
+  </header>
+
+  <mat-tab-group animationDuration="0ms" class="demo-tabs">
+    <mat-tab label="1.1 Refatoração" >
+      <div class="tela">
+        <h2>Catálogo da Verdureira</h2>
+        <p class="tela-sub">Classes tipadas, sem duplicação de busca — <code>Verdureira.getDescricaoProduto</code> e <code>hasEstoqueProduto</code> rodando pros 3 produtos cadastrados.</p>
+
+        <div class="cards-produto">
+          @for (produto of produtosDemo; track produto.id) {
+            <mat-card class="card-produto">
+              <p class="produto-descricao">{{ produto.descricao }}</p>
+              <span class="badge" [class.badge--ok]="produto.emEstoque" [class.badge--erro]="!produto.emEstoque">
+                {{ produto.emEstoque ? 'Em estoque' : 'Sem estoque' }}
+              </span>
+            </mat-card>
+          }
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="1.2 Generics">
+      <div class="tela">
+        <h2>filtrarEPaginar&lt;T&gt;</h2>
+        <p class="tela-sub">Filtra e pagina um array de usuários fake — digite pra filtrar por nome.</p>
+
+        <mat-form-field appearance="outline" class="campo-filtro">
+          <mat-label>Filtrar por nome</mat-label>
+          <input matInput [formControl]="filtroNome" placeholder="ex: ana" />
+        </mat-form-field>
+
+        <ul class="lista-usuarios-demo">
+          @for (usuario of resultadoPaginado().itens; track usuario.id) {
+            <li>{{ usuario.nome }}</li>
+          } @empty {
+            <li class="lista-vazia">Nenhum usuário bate com esse filtro</li>
+          }
+        </ul>
+
+        <div class="paginacao">
+          <button mat-stroked-button (click)="paginaAnterior()" [disabled]="pagina() === 1">
+            <mat-icon>chevron_left</mat-icon>
+            Anterior
+          </button>
+          <span>Página {{ pagina() }} de {{ totalPaginas() }} — {{ resultadoPaginado().total }} no total</span>
+          <button mat-stroked-button (click)="proximaPagina()" [disabled]="pagina() >= totalPaginas()">
+            Próxima
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="2.1 OnPush">
+      <div class="tela">
+        <h2>Change Detection + markForCheck</h2>
+        <p class="tela-sub">
+          O nome demora ~500ms (delay simulando a API) e só aparece por causa do
+          <code>markForCheck()</code>. O contador ao lado prova que o zone.js segue rodando
+          enquanto isso.
+        </p>
+
+        <div class="onpush-demo">
+          <app-pessoa-onpush-demo #onpushDemo />
+          <p class="contador">contador (setInterval): {{ onpushDemo.contador }}</p>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="2.2 forkJoin">
+      <div class="tela">
+        <h2>Duas chamadas em paralelo</h2>
+        <p class="tela-sub"><code>buscarPorId</code> e <code>buscarQuantidadeFamiliares</code> rodando juntas com <code>forkJoin</code>, sem subscribe aninhado.</p>
+
+        <div class="detalhe-demo">
+          @if (mostrarDetalhe()) {
+            <app-pessoa-detalhe />
+          }
+          <button mat-stroked-button (click)="recarregarDetalhe()">
+            <mat-icon>refresh</mat-icon>
+            Recarregar (recria o componente e dispara o forkJoin de novo)
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="2.3 Debounce">
+      <div class="tela">
+        <h2>Busca reativa</h2>
+        <p class="tela-sub">Digite um nome — busca de verdade no <code>/users</code> do json-server, com debounce de 500ms e switchMap cancelando buscas antigas.</p>
+
+        <app-busca-usuario />
+      </div>
+    </mat-tab>
+
+    <mat-tab label="2.4 trackBy">
+      <div class="tela">
+        <h2>Lista de {{ itensLista().length }} itens</h2>
+        <p class="tela-sub">OnPush + <code>track item.id</code> — adicionar, remover e embaralhar não recriam a lista inteira, só o que muda.</p>
+
+        <div class="acoes-lista">
+          <button mat-stroked-button (click)="adicionarItem()">
+            <mat-icon>add</mat-icon>
+            Adicionar no topo
+          </button>
+          <button mat-stroked-button (click)="removerItem()">
+            <mat-icon>remove</mat-icon>
+            Remover o primeiro
+          </button>
+          <button mat-stroked-button (click)="embaralharItens()">
+            <mat-icon>shuffle</mat-icon>
+            Embaralhar
+          </button>
+        </div>
+
+        <div class="lista-performance-wrap">
+          <app-lista-performance [itens]="itensLista()" />
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="3.2 NgRx">
+      <div class="tela">
+        <h2>Feature To-do</h2>
+        <p class="tela-sub">Actions → reducer → selectors → effect, puxando <code>/todos</code> do json-server.</p>
+
+        @if (todoState$ | async; as state) {
+          <div class="ngrx-status">
+            <span class="badge" [class.badge--ok]="!state.loading && !state.error" [class.badge--erro]="!!state.error">
+              @if (state.loading) {
+                carregando...
+              } @else if (state.error) {
+                erro: {{ state.error }}
+              } @else {
+                carregado
+              }
+            </span>
+            <button mat-stroked-button (click)="recarregarTodos()">
+              <mat-icon>refresh</mat-icon>
+              Recarregar
+            </button>
+          </div>
+        }
+
+        <div class="todo-colunas">
+          <div>
+            <h3>Todas ({{ (todos$ | async)?.length ?? 0 }})</h3>
+            <ul class="lista-todos">
+              @for (todo of (todos$ | async); track todo.id) {
+                <li [class.concluida]="todo.concluida" (click)="alternarTodo(todo)">
+                  <mat-icon>{{ todo.concluida ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                  {{ todo.titulo }}
+                </li>
+              }
+            </ul>
+          </div>
+          <div>
+            <h3>Pendentes ({{ (pendentes$ | async)?.length ?? 0 }})</h3>
+            <ul class="lista-todos">
+              @for (todo of (pendentes$ | async); track todo.id) {
+                <li (click)="alternarTodo(todo)">
+                  <mat-icon>check_box_outline_blank</mat-icon>
+                  {{ todo.titulo }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -11,6 +11,8 @@ module.exports = {
     '!src/app/**/*.routes.ts',
     '!src/app/**/models/**',
     '!src/app/app.config.ts',
+    // respostas dos itens 1-3 da avaliação — sem exigência de cobertura
+    '!src/app/examples/**',
   ],
   coverageThreshold: {
     global: {

@@ -8,5 +8,12 @@
       "typePhone": "Celular",
       "id": 1
     }
+  ],
+  "todos": [
+    { "id": 1, "titulo": "Revisar PR do time", "concluida": false },
+    { "id": 2, "titulo": "Escrever testes do módulo de usuários", "concluida": true },
+    { "id": 3, "titulo": "Ajustar responsividade do modal", "concluida": false },
+    { "id": 4, "titulo": "Configurar pipeline de CI", "concluida": true },
+    { "id": 5, "titulo": "Documentar endpoints da API", "concluida": false }
   ]
 }
