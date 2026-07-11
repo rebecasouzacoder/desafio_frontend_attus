@@ -179,17 +179,7 @@ export class ModalUserComponent implements OnInit {
   const value = input.value;
 
 
-  let type = this.form.controls.typePhone.value;
-
-
-  if (!type) {
-
-    if(type){
-      this.form.controls.typePhone.setValue(type);
-    }
-
-  }
-
+  const type = this.form.controls.typePhone.value;
 
   this.form.controls.phone.setValue(
     maskPhone(value, type),

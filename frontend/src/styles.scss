@@ -1,5 +1,14 @@
 @import './app/theme/tokens.scss';
 @import './app//theme//utility.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden; background-color: var(--color-background); }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
