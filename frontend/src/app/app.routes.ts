@@ -7,7 +7,7 @@ export const routes: Routes = [
     {
         path: 'exemplos',
         loadComponent: () =>
-            import('./examples/demo/examples-demo.component').then(
+            import('./features/examples/demo/examples-demo.component').then(
                 (m) => m.ExamplesDemoComponent,
             ),
     },

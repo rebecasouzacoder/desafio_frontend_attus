@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { environment } from '../../../environments/environments';
+import { environment } from '../../../../environments/environments';
 import { Usuario } from './usuario.model';
 
 // aponta pro json-server do próprio projeto (npm run api) — dá pra testar
